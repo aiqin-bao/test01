@@ -1,38 +1,31 @@
-import { PureComponent,  } from 'react'
-import ReactDom from 'react-dom'
+import { PureComponent } from "react";
+import ReactDom from "react-dom";
 
-import './index.scss'	
+import "./index.scss";
 
+class Index extends PureComponent {
+  state = {
+    number: 111,
+    test: "demo",
+  };
 
-class Index extends PureComponent { 
+  addNumber() {
+    this.setState((state, props) => ({
+      number: state.number + 1,
+    }));
+  }
 
-	state = {
-		number: 111,
-	}
+  render() {
+    const { number } = this.state;
 
-
-	addNumber() {
-		console.warn(11);
-		this.setState((state, props) => ({
-			number: state.number + 1
-		}))
-	}
-
-
-	render() {
-
-		const { number } = this.state
-
-		return <div>
-			hello word~~~
-
-			<div> { number } </div>
-
-			<button onClick={() => this.addNumber()}> 添加 </button>
-		</div>
-	}
-
-	
+    return (
+      <div>
+        hello word~~~
+        <div> {number} </div>
+        <button onClick={() => this.addNumber()}> 添加 </button>
+      </div>
+    );
+  }
 }
 
-ReactDOM.render(<Index />, document.querySelector('#container'))
+ReactDOM.render(<Index />, document.querySelector("#container"));
